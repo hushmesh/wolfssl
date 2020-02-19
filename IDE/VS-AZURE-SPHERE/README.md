@@ -1,6 +1,28 @@
 wolfSSL for Microsoft Azure Sphere Devices
 ==========================================
 
+## CMake support (robspassky@gmail.com, 2020-02-19)
+Since the 20.01 release of the Visual Studio Azure Sphere SDK, only CMake is supported
+for building. I've added a CMakeLists.txt file to this directory to support building
+a libwolfcrypt.a library based on the .vcxproj file.
+
+The new CMake support has one parameter: IS_RELEASE. If this variable is set to a truthy
+value, then the "Release|ARM" settings of the .vcxproj file will be followed, otherwise
+it will default to using the "Debug|ARM" settings.
+
+So far, this has only been tested under Linux as a stand-alone (non-Azure Sphere) build. 
+Here's a sample build session:
+```
+$ cd IDE/VS-AZURE-SPHERE
+$ mkdir build
+$ cd build
+$ cmake ..  # or cmake -DIS_RELEASE=1 ..
+$ cmake --build .
+```
+
+The wolfssl.vcxproj has been removed, but can be referenced here: 
+https://github.com/wolfSSL/wolfssl/blob/master/IDE/VS-AZURE-SPHERE/wolfssl.vcxproj
+
 ## Description
 This directory contains the Visual Studio projects targeted for Azure Sphere.
 The example projects include a client, server and wolfCrypt Library Test.
