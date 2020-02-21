@@ -43,6 +43,7 @@
 #define HAVE_SNI
 #define HAVE_OCSP
 #define HAVE_AESGCM
+#define HAVE_HKDF /*rsc*/
 
 /* Disable options */
 #define NO_PWDBASED
@@ -64,7 +65,7 @@
 #define NO_FILESYSTEM
 
 /* Debug */
-#define printf Log_Debug
+/*#define printf Log_Debug*/
 #define WOLFIO_DEBUG
 
 #endif /* _USER_SETTINGS_H_ */
