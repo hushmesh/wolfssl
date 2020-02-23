@@ -42,6 +42,8 @@
     #include <stdlib.h>   /* strtol() */
 #endif
 
+#include <stdio.h> /* printf() */
+
 /*
 Possible IO enable options:
  * WOLFSSL_USER_IO:     Disables default Embed* callbacks and     default: off
