@@ -2332,7 +2332,11 @@ int wc_GenerateSeed(OS_Seed* os, byte* output, word32 sz)
         #include <sys/random.h>
         int wc_GenerateSeed(OS_Seed* os, byte* output, word32 sz)
         {
-            return getrandom(output, sz, 0);
+             int bytesGenerated = getrandom(output, sz, 0);
+             if (bytesGenerated != sz) {
+                 return -1;
+             }
+             return 0;
         }
 
 #elif defined(NO_DEV_RANDOM)
