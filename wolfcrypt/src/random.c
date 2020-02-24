@@ -2266,7 +2266,7 @@ int wc_GenerateSeed(OS_Seed* os, byte* output, word32 sz)
       defined(WOLFSSL_LPC43xx)  || defined(WOLFSSL_STM32F2xx) || \
       defined(MBED)             || defined(WOLFSSL_EMBOS) || \
       defined(WOLFSSL_GENSEED_FORTEST) || defined(WOLFSSL_CHIBIOS) || \
-      defined(WOLFSSL_CONTIKI)  || defined(WOLFSSL_AZSPHERE)
+      defined(WOLFSSL_CONTIKI)
 
     /* these platforms do not have a default random seed and
        you'll need to implement your own wc_GenerateSeed or define via
@@ -2325,6 +2325,14 @@ int wc_GenerateSeed(OS_Seed* os, byte* output, word32 sz)
                 }
             }
             return 0;
+        }
+
+#elif defined(WOLFSSL_AZSPHERE)
+
+        #include <sys/random.h>
+        int wc_GenerateSeed(OS_Seed* os, byte* output, word32 sz)
+        {
+            return getrandom(output, sz, 0);
         }
 
 #elif defined(NO_DEV_RANDOM)
