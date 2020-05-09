@@ -1,3 +1,5 @@
+hushmesh/enclave/out
+hushmesh/trustee/out
 ctaocrypt/src/src/
 *.swp
 *.lo
