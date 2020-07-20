@@ -46,6 +46,10 @@
 #define HAVE_HKDF /*rsc*/
 #define WOLFCRYPT_ONLY /*rsc*/
 #define HAVE_ECC_ENCRYPT /*rsc*/
+#define WOLFSSL_PUB_PEM_TO_DER
+#define WOLFSSL_DER_TO_PEM
+#define WOLFSSL_SHA384
+#define WOLFSSL_BASE64_ENCODE
 
 /* Disable options */
 #define NO_PWDBASED
